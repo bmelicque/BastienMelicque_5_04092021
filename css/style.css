@@ -5,6 +5,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
+  color: inherit;
 }
 
 html {
@@ -17,6 +18,29 @@ body {
   background-color: #F3E9F1;
   display: flex;
   flex-direction: column;
+}
+
+/* Cartes cliquables  */
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 15rem;
+  box-shadow: 0 0 4px #653f5f;
+  transition: 0.2s;
+  cursor: pointer;
+  background-color: white;
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+.card:hover {
+  box-shadow: 0 0 6px #452c42;
+  transform: scale(1.01);
+}
+.card__img {
+  width: 100%;
+  object-fit: cover;
+  flex: 0 1 10rem;
+  min-height: 0;
 }
 
 .header {
@@ -66,6 +90,7 @@ body {
   width: 100%;
   display: grid;
   grid-template-columns: 1fr;
+  grid-auto-rows: min-content;
   gap: 1rem;
 }
 @media screen and (min-width: 576px) {
@@ -77,10 +102,6 @@ body {
   .list {
     grid-template-columns: repeat(3, 1fr);
   }
-}
-.list li {
-  height: 10rem;
-  background-color: white;
 }
 
 .footer {

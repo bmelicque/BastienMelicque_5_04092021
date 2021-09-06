@@ -3,18 +3,22 @@
     display: flex;
     flex-direction: column;
     height: 15rem;
-    box-shadow: 0 3px 10px 6px grey;
+    box-shadow: $shadow;
     transition: .2s;
+    cursor: pointer;
+    background-color: white;
+    border-radius: .5rem;
+    overflow: hidden;
 
     &:hover {
-        box-shadow: 0 3px 10px 6px darken(grey, 10%);
+        box-shadow: $shadow-strong;
         transform: scale(1.01);
     }
 
     &__img {
         width: 100%;
         object-fit: cover;
-        flex: 1 10rem;
+        flex: 0 1 10rem;
         min-height: 0;
     }
 }
