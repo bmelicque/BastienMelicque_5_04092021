@@ -1,0 +1,5 @@
+.header {
+    @include expanded-bg(white);
+    z-index: 1;
+    box-shadow: 0 0 5px grey;
+}

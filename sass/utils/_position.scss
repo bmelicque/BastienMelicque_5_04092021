@@ -1,0 +1,117 @@
+// Places absolutely an element
+//
+// With keyword "fill", it fills the reference element
+// With keyword "height", it fills the full height of the parent. Horizontal position can be adjusted with one (both sides) or two (left then right) values
+// With keyword "width", it fills the full width of the parent. Vertical position can be adjusted with one (both sides) or two (top then bottom) values
+// With keyword "left", it fills the full height of the parent with "left: 0" attribute. Position from the other side may be adjusted with another value
+// Keywords "top", "bottom" and "right" function on the same basis
+//
+// If no keywords are used, the numerical values are used like in many CSS properties:
+// 1 value applies to all of "top", "left", "bottom" and "right"
+// 2 values apply to "top", "bottom" then "left", "right"
+// 3 values apply to "top" then "left", "right" then "bottom"
+// 4 values are, in order: "top", "left", "bottom", "right"
+
+@mixin position($arguments...) {
+    $values: ();
+    $top: false;
+    $bottom: false;
+    $left: false;
+    $right: false;
+    
+    // Treating values
+    @for $i from 0 to length($arguments) {
+        @if nth($arguments, $i + 1) == fill {
+            $top: 0;
+            $bottom: 0;
+            $left: 0;
+            $right: 0;
+        }
+        @else if nth($arguments, $i + 1) == height {
+            $top: 0;
+            $bottom: 0;
+        }
+        @else if nth($arguments, $i + 1) == width {
+            $left: 0;
+            $right: 0;
+        }
+        @else if nth($arguments, $i + 1) == top {
+            $top: 0;
+            $left: 0;
+            $right: 0;
+        }
+        @else if nth($arguments, $i + 1) == bottom {
+            $bottom: 0;
+            $left: 0;
+            $right: 0;
+        }
+        @else if nth($arguments, $i + 1) == left {
+            $top: 0;
+            $bottom: 0;
+            $left: 0;
+        }
+        @else if nth($arguments, $i + 1) == right {
+            $top: 0;
+            $bottom: 0;
+            $right: 0;
+        }
+        @else {
+            $values: append($values, nth($arguments, $i + 1));
+        }
+    }
+
+    // Tests if there were no text command
+    $no-string: not $top and not $bottom and not $left and not $right;
+    
+    // Writing CSS
+    position: absolute;
+
+    @if $top {
+        top: $top;
+    }
+    @else if length($values) >= 1 {
+        top: nth($values, 1);
+    }
+    
+    @if $bottom {
+        bottom: $bottom;
+    }
+    @else if length($values) >= 1 {
+        @if $top or ($left and $right and length($values) == 1) or (length($values) <= 2 and $no-string) {
+            bottom: nth($values, 1);
+        }
+        @else if $left and $right and length($values) >= 2 {
+            bottom: nth($values, 2);
+        }
+        @else {
+            bottom: nth($values, 3);
+        }
+    }
+
+    @if $left {
+        left: $left;
+    }
+    @else if length($values) >= 1 {
+        @if $right or ($top and $bottom) or ($no-string and length($values) == 1) {
+            left: nth($values, 1);
+        }
+        @else if $no-string and length($values) >= 2 {
+            left: nth($values, 2);
+        }
+    }
+
+    @if $right {
+        right: $right;
+    }
+    @else if length($values) >= 1 {
+        @if $left or length($values) == 1 {
+            right: nth($values, 1);
+        }
+        @else if length($values) >= 4 {
+            right: nth($values, 4);
+        }
+        @else {
+            right: nth($values, 2)
+        }
+    }
+}
