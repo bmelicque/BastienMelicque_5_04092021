@@ -1,0 +1,20 @@
+/* Cartes cliquables  */
+.card {
+    display: flex;
+    flex-direction: column;
+    height: 15rem;
+    box-shadow: 0 3px 10px 6px grey;
+    transition: .2s;
+
+    &:hover {
+        box-shadow: 0 3px 10px 6px darken(grey, 10%);
+        transform: scale(1.01);
+    }
+
+    &__img {
+        width: 100%;
+        object-fit: cover;
+        flex: 1 10rem;
+        min-height: 0;
+    }
+}

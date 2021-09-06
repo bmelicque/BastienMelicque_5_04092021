@@ -1,6 +1,31 @@
 @mixin container {
     display: flex;
     width: 100%;
-    max-width: 1200px;
     margin: 0 auto;
+    padding: 1rem;
+}
+
+@mixin container-sm {
+    @include container;
+    max-width: 540px;
+}
+
+@mixin container-md {
+    @include container;
+    max-width: 720px;
+}
+
+@mixin container-lg {
+    @include container;
+    max-width: 960px;
+}
+
+@mixin container-xl {
+    @include container;
+    max-width: 1140px;
+}
+
+@mixin container-xxl {
+    @include container;
+    max-width: 1320px;
 }

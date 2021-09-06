@@ -1,12 +1,17 @@
 // Expands the background to the full size of the viewport
-@mixin expanded-bg($background) {
+@mixin expanded-bg($background, $shadow: none) {
     position: relative;
     
     &::before {
-        @include position(left);
+        content: '';
+        @include position(height, 50%, auto);
         z-index: -1;
         width: 100vw;
         transform: translateX(-50%);
         background: $background;
+
+        @if $shadow != none {
+            box-shadow: $shadow;
+        }
     }
 }
