@@ -1,4 +1,4 @@
-.header {
+.footer {
     @include container-lg;
     justify-content: space-between;
     align-items: center;
@@ -8,11 +8,4 @@
     font-size: 1.2rem;
     
     @include expanded-bg($color-primary, $shadow);
-
-    &__logo {
-        height: 2rem;
-    }
-    i {
-        font-size: 1.5rem;
-    }
 }

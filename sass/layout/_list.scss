@@ -1,4 +1,20 @@
 .list {
-    @include container-lg;
-    flex: 1;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+
+    @include sm {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    // TEMPORARY !!!!
+    li {
+        height: 10rem;
+        background-color: white;
+    }
 }

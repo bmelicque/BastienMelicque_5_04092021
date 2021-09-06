@@ -1,37 +1,22 @@
 * {
+  font-family: "Noto Sans", sans-serif;
   text-decoration: none;
   list-style-type: none;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  overflow-x: hidden;
 }
 
 body {
-  margin: 0;
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   background-color: #F3E9F1;
   display: flex;
   flex-direction: column;
-}
-
-.footer {
-  display: flex;
-  width: 100%;
-  margin: 0 auto;
-  padding: 1rem;
-  max-width: 960px;
-  position: relative;
-}
-.footer::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 50%;
-  right: auto;
-  z-index: -1;
-  width: 100vw;
-  transform: translateX(-50%);
-  background: white;
-  box-shadow: 0 0 5px grey;
 }
 
 .header {
@@ -41,9 +26,11 @@ body {
   padding: 1rem;
   max-width: 960px;
   justify-content: space-between;
+  align-items: center;
   z-index: 1;
   padding: 1rem;
-  color: #F3E9F1;
+  color: white;
+  font-size: 1.2rem;
   position: relative;
 }
 .header::before {
@@ -57,16 +44,71 @@ body {
   width: 100vw;
   transform: translateX(-50%);
   background: #261824;
-  box-shadow: 0 0 5px grey;
+  box-shadow: 0 0 4px #653f5f;
+}
+.header__logo {
+  height: 2rem;
+}
+.header i {
+  font-size: 1.5rem;
 }
 
-.list {
+.main {
   display: flex;
   width: 100%;
   margin: 0 auto;
   padding: 1rem;
   max-width: 960px;
   flex: 1;
+}
+
+.list {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+@media screen and (min-width: 576px) {
+  .list {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (min-width: 992px) {
+  .list {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+.list li {
+  height: 10rem;
+  background-color: white;
+}
+
+.footer {
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1rem;
+  max-width: 960px;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1;
+  padding: 1rem;
+  color: white;
+  font-size: 1.2rem;
+  position: relative;
+}
+.footer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  right: auto;
+  z-index: -1;
+  width: 100vw;
+  transform: translateX(-50%);
+  background: #261824;
+  box-shadow: 0 0 4px #653f5f;
 }
 
 /*# sourceMappingURL=style.css.map */

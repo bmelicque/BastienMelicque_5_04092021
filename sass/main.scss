@@ -1,4 +1,5 @@
 @import "utils/variables";
+@import "utils/breakpoints";
 @import "utils/position";
 @import "utils/expanded-bg";
 @import "utils/block-mixins";
@@ -6,4 +7,6 @@
 @import "base/base";
 
 @import "layout/header";
+@import "layout/main";
 @import "layout/list";
+@import "layout/footer";

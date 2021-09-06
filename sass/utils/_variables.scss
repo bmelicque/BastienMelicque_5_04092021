@@ -4,3 +4,5 @@ $color-tertiary: #D68A07;
 $color-light: #F3E9F1;
 
 $gradient: linear-gradient($color-secondary, $color-tertiary);
+
+$shadow: 0 0 4px lighten($color-primary, 20%);
