@@ -51,12 +51,29 @@ const addToCart = (id, lens, quantity) => {
 
 displayOne();
 
-document.getElementById('addToCart').addEventListener('submit', (e) => {
-    const lens = document.getElementById('lens').value;
-    const quantity = Number.parseInt(document.getElementById('quantity').value);
 
-    addToCart(getId(), lens, quantity);
+document.getElementById('addToCart').addEventListener('submit', (e) => {
     e.preventDefault();
 
+    const lens = document.getElementById('lens').value;
+    const quantity = checkQuantity();
+
+    console.log(quantity);
+
+    if (quantity > 0) addToCart(getId(), lens, quantity);
+
     console.log(window.localStorage.cart);
+});
+
+document.getElementById('cart__minus').addEventListener('click', () => {
+    const quantity = document.getElementById('quantity');
+    quantity.value = quantity.value > 0 ? quantity.value - 1 : 0;
+});
+
+document.getElementById('cart__plus').addEventListener('click', () => {
+    document.getElementById('quantity').value ++;
+});
+
+document.getElementById('quantity').addEventListener('blur', () => {
+    document.getElementById('quantity').value = checkQuantity();
 })

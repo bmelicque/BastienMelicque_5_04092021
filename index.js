@@ -12,3 +12,4 @@ const displayCameras = async () => {
 }
 
 displayCameras();
+cartPreview();
