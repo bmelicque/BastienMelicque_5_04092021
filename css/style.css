@@ -24,7 +24,6 @@ body {
 .card {
   display: flex;
   flex-direction: column;
-  height: 15rem;
   box-shadow: 0 0 4px #653f5f;
   transition: 0.2s;
   cursor: pointer;
@@ -41,6 +40,15 @@ body {
   object-fit: cover;
   flex: 0 1 10rem;
   min-height: 0;
+}
+.card__content {
+  padding: 1rem 2rem;
+}
+.card__name {
+  font-size: 1.4rem;
+}
+.card__price {
+  font-size: 1.2rem;
 }
 
 .header {
@@ -82,7 +90,7 @@ body {
   width: 100%;
   margin: 0 auto;
   padding: 1rem;
-  max-width: 960px;
+  max-width: 1140px;
   flex: 1;
 }
 
@@ -91,7 +99,7 @@ body {
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: min-content;
-  gap: 1rem;
+  gap: 2rem;
 }
 @media screen and (min-width: 576px) {
   .list {

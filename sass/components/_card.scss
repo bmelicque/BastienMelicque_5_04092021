@@ -2,7 +2,6 @@
 .card {
     display: flex;
     flex-direction: column;
-    height: 15rem;
     box-shadow: $shadow;
     transition: .2s;
     cursor: pointer;
@@ -20,5 +19,17 @@
         object-fit: cover;
         flex: 0 1 10rem;
         min-height: 0;
+    }
+
+    &__content {
+        padding: 1rem 2rem;
+    }
+
+    &__name {
+        font-size: 1.4rem;
+    }
+
+    &__price {
+        font-size: 1.2rem;
     }
 }

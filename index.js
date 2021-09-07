@@ -12,7 +12,7 @@ const displayCameras = async () => {
     console.log(cameraList);
 
     document.getElementById("list").innerHTML = cameraList.map(camera => {
-        let price = (camera.price / 100).toFixed(2) + ' €';
+        let price = formatPrice(camera.price);
         let url = "./views/product.html?id=" + camera._id;
         return `
         <li>
