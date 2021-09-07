@@ -9,7 +9,7 @@ const getId = () => {
             id = element.replace("id=", "");
         }
     });
-
+    
     return id;
 }
 
@@ -17,8 +17,8 @@ const fetchOne = async () => {
     const cameraId = getId();
     
     await fetch('http://localhost:3000/api/cameras/' + cameraId)
-        .then(res => res.json())
-        .then(data => camera = data);
+    .then(res => res.json())
+    .then(data => camera = data);
 }
 
 const displayOne = async () => {
@@ -26,4 +26,45 @@ const displayOne = async () => {
     display(camera, document.getElementById("camera"));
 }
 
+const addToCart = (id, lens, quantity) => {
+    // Checking if the cart exists
+    if (!(window.localStorage.cart)) {
+        window.localStorage.setItem("cart", JSON.stringify({
+            quantity: 0,
+            content: []
+        }));
+    }
+    
+    let cart = JSON.parse(window.localStorage.cart);
+    
+    // Check if item already in cart
+    const found = cart.content.findIndex(element => ((element.id == id) && (element.lens == lens)));
+    
+    // Add / Change quantity
+    if (found >= 0) {
+        cart.content[found].quantity = Number.parseInt(cart.content[found].quantity) + Number.parseInt(quantity);
+    }
+    else cart.content.push({
+        id: id,
+        lens: lens,
+        quantity: quantity
+    })
+    
+    // Change quantity of items in the cart
+    cart.quantity = Number.parseInt(cart.quantity) + Number.parseInt(quantity);
+    
+    // Save cart to local storage
+    window.localStorage.cart = JSON.stringify(cart);
+}
+
 displayOne();
+
+document.getElementById('addToCart').addEventListener('submit', (e) => {
+    const lens = document.getElementById('lens').value;
+    const quantity = Number.parseInt(document.getElementById('quantity').value);
+
+    addToCart(getId(), lens, quantity);
+    e.preventDefault();
+
+    console.log(window.localStorage.cart);
+})
