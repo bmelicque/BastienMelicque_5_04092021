@@ -31,14 +31,20 @@
     </div>
 
     <template id="product">
-        <a class="card">
+        <div class="card">
             <img class="card__img">
             <div class="card__content">
                 <h2 class="card__name"></h2>
                 <p class="card__description"></p>
+                <p class="card__options">
+                    <label for="lens">Objectif&nbsp;:</label>
+                    <select name="lens" id="lens">
+
+                    </select>
+                </p>
                 <p class="card__price"></p>
             </div>
-        </a>
+        </div>
     </template>
 
     <script src="../models/functions.js"></script>

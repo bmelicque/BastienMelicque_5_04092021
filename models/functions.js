@@ -14,6 +14,15 @@ const display = (element, container) => {
     if (clone.querySelector(".card__description")) {
         clone.querySelector(".card__description").textContent = element.description;
     }
+    if (clone.querySelector(".card__options")) {
+        element.lenses.forEach(lens => {
+            let option = document.createElement("option");
+            option.setAttribute("value", lens);
+            option.textContent = lens;
+
+            clone.querySelector(".card__options > select").appendChild(option);
+        })
+    }
     
     container.appendChild(clone);
 }
