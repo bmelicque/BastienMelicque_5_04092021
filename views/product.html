@@ -16,7 +16,19 @@
     <div id="camera" class="list">
 
     </div>
-
+    <div class="cart">
+        <img src="" alt="Panier" class="cart__img">
+        <form class="cart__add">
+            <label for="quantity">Quantité&nbsp;:</label>
+            <div class="cart__quantity">
+                <a role="button" class="cart__minus" title="En retirer un">-</a>
+                <input type="text" class="cart__number" id="quantity" name="quantity" value="1">
+                <a role="button" class="cart__plus" title="En ajouter un">+</a>
+            </div>
+            <button type="submit">Ajouter au panier</button>
+        </form>
+        <p class="cart__content">Déjà dans le panier&nbsp;:</p>
+    </div>
 
     <template id="product">
         <a class="card">
