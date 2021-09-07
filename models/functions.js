@@ -26,3 +26,15 @@ const display = (element, container) => {
     
     container.appendChild(clone);
 }
+
+const getCart = () => {
+    // Checking if the cart exists
+    if (!(window.localStorage.cart)) {
+        window.localStorage.setItem("cart", JSON.stringify({
+            quantity: 0,
+            content: []
+        }));
+    }
+    
+    return JSON.parse(window.localStorage.cart);
+}

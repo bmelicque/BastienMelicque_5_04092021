@@ -27,15 +27,7 @@ const displayOne = async () => {
 }
 
 const addToCart = (id, lens, quantity) => {
-    // Checking if the cart exists
-    if (!(window.localStorage.cart)) {
-        window.localStorage.setItem("cart", JSON.stringify({
-            quantity: 0,
-            content: []
-        }));
-    }
-    
-    let cart = JSON.parse(window.localStorage.cart);
+    let cart = getCart();
     
     // Check if item already in cart
     const found = cart.content.findIndex(element => ((element.id == id) && (element.lens == lens)));
