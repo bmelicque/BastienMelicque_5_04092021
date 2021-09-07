@@ -23,6 +23,12 @@ const display = (element, container) => {
             clone.querySelector(".card__options > select").appendChild(option);
         })
     }
+    if (clone.querySelector(".card__quantity")) {
+        clone.querySelector(".card__quantity").textContent = element.quantity;
+    }
+    if (clone.querySelector(".card__total-price")) {
+        clone.querySelector(".card__total-price").textContent = formatPrice(element.quantity * element.price);
+    }
     
     container.appendChild(clone);
 }
