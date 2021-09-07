@@ -19,22 +19,11 @@ const fetchOne = async () => {
     await fetch('http://localhost:3000/api/cameras/' + cameraId)
         .then(res => res.json())
         .then(data => camera = data);
-
-    console.log(camera);
 }
 
 const displayOne = async () => {
     await fetchOne();
-
-    document.getElementById('product').innerHTML = `
-        <div class="card">
-            <img class="card__img" src=${camera.imageUrl}>
-            <div class="card__content">
-                <h2 class="card__name">${camera.name}</h2>
-                <p class="card__price">${formatPrice(camera.price)}</p>
-            </div>
-        </div>
-    `;
+    display(camera, document.getElementById("camera"));
 }
 
 displayOne();
