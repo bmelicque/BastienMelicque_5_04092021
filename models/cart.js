@@ -7,20 +7,20 @@ const displayCartContent = () => {
     totalPrice.textContent = formatPrice(cart.totalPrice);
 }
 
-const displayError = source => {
+const displayError = element => {
     const errors = {
         "lastName": "Veuillez renseigner un nom correct",
         "firstName": "Veuillez renseigner un prénom correct",
         "address": "Veuillez renseigner une adresse correcte",
         "city": "Veuillez renseigner un nom de ville correct",
-        "mail": "Veuillez renseigner une adresse e-mail correcte",
+        "email": "Veuillez renseigner une adresse e-mail correcte",
     };
-    source.value = "";
-    if (document.querySelector("#"+source.id+" + .form__error") == null){
+    element.value = "";
+    if (document.querySelector("#"+element.id+" + .form__error") == null){
         let errorMessage = document.createElement('p');
-        errorMessage.textContent = errors[source.name];
-        errorMessage.classList.add("form__error")
-        source.after(errorMessage);
+        errorMessage.textContent = errors[element.name];
+        errorMessage.classList.add("form__error");
+        element.after(errorMessage);
     }
 }
 
@@ -29,7 +29,7 @@ const checkForm = form => {
     const inputs = form.querySelectorAll('input');
     const constraints = {
         "name": new RegExp(`^[A-Za-z' -]+$`),
-        "mail": new RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'),
+        "email": new RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'),
         "address": new RegExp(`^[0-9A-Za-z' -,]+$`)
     }
 
@@ -43,11 +43,40 @@ const checkForm = form => {
     return isValid;
 }
 
+const postOrder = async (contact, products) => {
+    fetch('http://localhost:3000/api/cameras/order', {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            contact: contact,
+            products: products
+        }),
+        mode: 'cors'
+    }).then(res => res.json())
+    .then(res => {
+        const URL = "./order-status.html?id=" + res.orderId + "&price=" + window.localStorage.cart.totalPrice;
+        window.location = URL;
+    })
+}
+
 displayCartContent();
 
 document.getElementById('order').addEventListener('submit', e => {
     e.preventDefault();
     if (checkForm(e.target)) {
-        
+        const inputs = e.target.querySelectorAll('input');
+        const cart = getCart();
+        let contact = {};
+        let products = [];
+        inputs.forEach(input => contact[input.name] = input.value);
+        cart.content.forEach(item => {
+            for (let i = 0; i < item.quantity; i++) {
+                products.push(item.id);
+            }
+        });
+
+        postOrder(contact, products);
     }
 });
