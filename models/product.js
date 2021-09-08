@@ -26,12 +26,10 @@ const displayOne = async () => {
     display(camera, document.getElementById("camera"));
 }
 
+// Returns a pair of indexes [index of id in cart, index of lens in customs]
 const findInCart = (id, lens) => {
     const cart = getCart();
     let found = cart.content.findIndex(element => (element.id == id));
-
-    console.log(cart.content[0]);
-    console.log(found);
     
     return (found >= 0) ? [found, cart.content[found].customs.findIndex(custom => (custom.lens == lens))] : [found, found];
 }
@@ -42,19 +40,19 @@ const addToCart = (id, lens, quantity) => {
     // Check if item already in cart
     const found = findInCart(id, lens);
     
-    // Add / Change quantity
-    if (found[1] >= 0) {
-        cart.content[found[0]].quantity = Number.parseInt(cart.content[found[0]].quantity) + Number.parseInt(quantity);
-        cart.content[found[0]].customs[found[1]].quantity = Number.parseInt(cart.content[found[0]].customs[found[1]].quantity) + Number.parseInt(quantity);
-    }
-    else if (found[0] >= 0) {
-        cart.content[found[0]].quantity = Number.parseInt(cart.content[found[0]].quantity) + Number.parseInt(quantity);
-        cart.content[found[0]].customs.push({
+    // Add item if new, or change the content of the cart
+    if (found[0] >= 0) {
+        let foundItem = cart.content[found[0]];
+        foundItem.quantity += quantity;
+        
+        if (found[1] >= 0) {
+            foundItem.customs[found[1]].quantity += quantity;
+        } else cart.content[found[0]].customs.push({
             lens: lens,
             quantity: quantity
         })
-    }
-    else cart.content.push({
+        
+    } else cart.content.push({
         id: id,
         name: camera.name,
         imageUrl: camera.imageUrl,
@@ -64,10 +62,11 @@ const addToCart = (id, lens, quantity) => {
             lens: lens,
             quantity: quantity
         }]
-    })
+    });
     
     // Change quantity of items in the cart
-    cart.quantity = Number.parseInt(cart.quantity) + Number.parseInt(quantity);
+    cart.quantity += quantity;
+    cart.totalPrice += quantity * camera.price;
     
     // Save cart to local storage
     window.localStorage.cart = JSON.stringify(cart);
@@ -82,11 +81,7 @@ document.getElementById('addToCart').addEventListener('submit', (e) => {
     const lens = document.getElementById('lens').value;
     const quantity = checkQuantity();
     
-    console.log(quantity);
-    
     if (quantity > 0) addToCart(getId(), lens, quantity);
-    
-    console.log(window.localStorage.cart);
 });
 
 document.getElementById('cart__minus').addEventListener('click', () => {

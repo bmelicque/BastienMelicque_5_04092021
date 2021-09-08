@@ -1,10 +1,10 @@
-// PROTOTYPE !!!!!
 const displayCartContent = () => {
     const cart = getCart();
     const section = document.querySelector('section');
+    const totalPrice = document.getElementById('total-price');
 
     cart.content.forEach(element => display(element, section))
-    console.log(cart.content);
+    totalPrice.textContent = formatPrice(cart.totalPrice);
 }
 
 displayCartContent();

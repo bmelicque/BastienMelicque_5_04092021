@@ -36,10 +36,14 @@ const display = (element, container) => {
 const getCart = () => {
     // Checking if the cart exists
     if (!(window.localStorage.cart)) {
-        window.localStorage.setItem("cart", JSON.stringify({
+        const emptyCart = {
             quantity: 0,
+            totalPrice: 0,
             content: []
-        }));
+        };
+
+        window.localStorage.setItem("cart", JSON.stringify(emptyCart));
+        return emptyCart;
     }
     
     return JSON.parse(window.localStorage.cart);
