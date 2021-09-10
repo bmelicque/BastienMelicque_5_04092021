@@ -2,34 +2,33 @@ const formatPrice = (price) => {
     return (price / 100).toFixed(2).toString().replace(".", ",") + " €";
 }
 
-const display = (element, container) => {
+// Affiche un produit (objet issu d'un fetch) dans un container donné
+const display = (product, container) => {
     const template = document.getElementById("product");
     let clone =  document.importNode(template.content, true);
-    let url = "./views/product.html?id=" + element._id;
-    
-    clone.querySelector(".card").setAttribute("href", url);
-    clone.querySelector(".card__img").setAttribute("src", element.imageUrl);
-    clone.querySelector(".card__name").textContent = element.name;
-    clone.querySelector(".card__price").textContent = formatPrice(element.price);
-    if (clone.querySelector(".card__description")) {
-        clone.querySelector(".card__description").textContent = element.description;
-    }
-    if (clone.querySelector(".card__options")) {
-        element.lenses.forEach(lens => {
-            let option = document.createElement("option");
-            option.setAttribute("value", lens);
-            option.textContent = lens;
+    const url = "./views/product.html?id=" + product._id;
 
-            clone.querySelector(".card__options > select").appendChild(option);
-        })
-    }
-    if (clone.querySelector(".card__quantity")) {
-        clone.querySelector(".card__quantity").textContent = element.quantity;
-    }
-    if (clone.querySelector(".card__total-price")) {
-        clone.querySelector(".card__total-price").textContent = formatPrice(element.quantity * element.price);
-    }
-    
+    // Equivalences entre les données stockées dans l'objet et les données à afficher (si elle sont différentes)
+    const content = {
+        price: formatPrice(product.price),
+        totalPrice: formatPrice(product.quantity * product.price)
+    };
+
+    // On parcoure les balises du container et on y injecte le contenu de l'objet produit
+    let tags = clone.querySelectorAll('*');
+    tags.forEach(tag => {
+        if (tag.dataset.text) tag.textContent = content[tag.dataset.text] || product[tag.dataset.text];
+        if (tag.tagName == "A") tag.href = "./views/product.html?id=" + product._id;
+        if (tag.tagName == "IMG") tag.src = product.imageUrl;
+        if (tag.tagName == "SELECT") {
+            product.lenses.forEach(lens => {
+                let option = document.createElement('option');
+                option.textContent = lens;
+                tag.append(option);
+            });
+        };
+    })
+
     container.appendChild(clone);
 }
 
