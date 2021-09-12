@@ -17,7 +17,7 @@ class Cart {
         return sum;
     }
     
-    // Hydrate the cart with the content of the localStorage (if it exists)
+    // Hydrates the cart with the content of the localStorage (if it exists)
     load() {
         if (window.localStorage.cart) {
             const stored = JSON.parse(window.localStorage.cart);
@@ -33,13 +33,13 @@ class Cart {
     // Adds a certain quantity of a product with the chosen lens into the current cart
     add(product, lens, quantity) {
         const found = this.content.findIndex(inCart => {
-            (product.id == inCart.id) && (product.lens == inCart.lens)
+            (product._id == inCart.id) && (product.lens == inCart.lens)
         })
         if (found >= 0) {
             this.content[found].quantity += product.quantity;
         } else {
             this.content.push({
-                id: product.id,
+                id: product._id,
                 lens: lens,
                 imageUrl: product.imageUrl,
                 name: product.name,
@@ -48,5 +48,11 @@ class Cart {
             })
         }
         this.save();
+    }
+
+    // Empties the cart (both the object and the localStorage)
+    empty() {
+        this.content = [];
+        window.localStorage.clear();
     }
 } 

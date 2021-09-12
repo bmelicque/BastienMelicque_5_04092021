@@ -31,33 +31,3 @@ const display = (product, container) => {
 
     container.appendChild(clone);
 }
-
-const getCart = () => {
-    // Checking if the cart exists
-    if (!(window.localStorage.cart)) {
-        const emptyCart = {
-            quantity: 0,
-            totalPrice: 0,
-            content: []
-        };
-
-        window.localStorage.setItem("cart", JSON.stringify(emptyCart));
-        return emptyCart;
-    }
-    
-    return JSON.parse(window.localStorage.cart);
-}
-
-const cartPreview = () => {
-    const cart = getCart();
-    document.getElementById('cart-preview').textContent = cart.quantity;
-    console.log(cart.quantity);
-}
-
-const checkQuantity = () => {
-    let value = document.getElementById('quantity').value;
-
-    value = Number.parseInt(value);
-
-    return Number.isInteger(value) ? value : 0;
-}
