@@ -1,35 +1,74 @@
-/* Cartes cliquables  */
 .card {
     display: flex;
     flex-direction: column;
     box-shadow: $shadow;
-    transition: .2s;
-    cursor: pointer;
     background-color: white;
     border-radius: .5rem;
     overflow: hidden;
-
-    &:hover {
-        box-shadow: $shadow-strong;
-        transform: scale(1.01);
+    
+    @include md {
+        &--full {
+            flex-direction: row;
+        }
     }
-
+    
+    &--click {
+        transition: .2s;
+        cursor: pointer;
+        &:hover {
+            box-shadow: $shadow-strong;
+            transform: scale(1.01);
+        }
+    }
+    
     &__img {
         width: 100%;
         object-fit: cover;
-        flex: 0 1 10rem;
+        flex: 1 10rem;
         min-height: 0;
+        
+        @include md {
+            &--horizontal {
+                width: 40%;
+            }
+        }
     }
-
+    
     &__content {
         padding: 1rem 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
     }
-
+    
     &__name {
         font-size: 1.4rem;
     }
-
+    
     &__price {
         font-size: 1.2rem;
+    }
+    
+    &__description {
+        flex: 1;
+    }
+
+    &__button {
+        font-size: 1rem;
+        height: 2rem;
+        border-radius: .2rem;
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+        background: $color-primary;
+        color: white;
+        border: none;
+        margin-top: 1rem;
+        cursor: pointer;
+        transition: .2s;
+
+        &:hover {
+            transform: scale(1.02);
+            background-color: lighten($color-primary, 10%);
+        }
     }
 }

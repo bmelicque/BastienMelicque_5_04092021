@@ -13,22 +13,26 @@
 </head>
 <body>
     <header class="header">
-        <img src="./media/logo.svg" alt="Orinoco" class="header__logo">
+        <a href="./index.html" class="header__home">
+            <img src="./media/logo.svg" alt="Orinoco" class="header__logo">
+        </a>
         <a class="header__cart" href="views/cart.html">
             <i class="fas fa-shopping-cart"></i>
             Panier&nbsp;: <span id="cart-preview"></span>
         </a>
     </header>
+
+
     <main class="main">
+        <h1 class="main__title">Nos appareils photos</h1>
         <ul class="list" id="list">
         </ul>
     </main>
-    <footer class="footer">FOOTER</footer>
 
-
+    <!-- Template used by JS to hydrate the page -->
     <template id="product">
         <li>
-            <a  class="card">
+            <a class="card card--click">
                 <img class="card__img">
                 <div class="card__content">
                     <h2 data-text="name" class="card__name"></h2>

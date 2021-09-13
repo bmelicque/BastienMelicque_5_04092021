@@ -25,7 +25,7 @@ const hydrate = (container, product) => {
             if (tag.dataset.text) tag.textContent = content[tag.dataset.text] || product[tag.dataset.text];
             if (tag.tagName == "A") tag.href = "./views/product.html?id=" + product._id;
             if (tag.tagName == "IMG") tag.src = product.imageUrl;
-            if (tag.tagName == "SELECT") {
+            if (tag.dataset.append) {
                 product.lenses.forEach(lens => {
                     let option = document.createElement('option');
                     option.textContent = lens;

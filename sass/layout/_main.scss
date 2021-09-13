@@ -1,4 +1,11 @@
 .main {
     @include container-xl;
+    flex-direction: column;
     flex: 1;
+
+    &__title {
+        margin-bottom: 1.5rem;
+        margin-left: 1rem;
+        font-size: 2rem;
+    }
 }

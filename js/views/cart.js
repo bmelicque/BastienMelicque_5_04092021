@@ -61,6 +61,7 @@ const postOrder = async (contact, products) => {
 let cart = new Cart();
 cart.load();
 hydrate(document.querySelector('section'), cart.content);
+document.getElementById('cart-preview').textContent = cart.quantity;
 document.getElementById('total-price').textContent = formatPrice(cart.totalPrice);
 
 // On form submit: checks user input in the form, then posts the order to the backend

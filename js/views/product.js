@@ -1,7 +1,7 @@
 /* ACTUAL CALL TO FUNCTIONS, HYDRATING PAGE */
 let cart = new Cart();
 cart.load();
-// document.getElementById('cart-preview').textContent = cart.quantity;
+document.getElementById('cart-preview').textContent = cart.quantity;
 
 let camera = {};
 (async () => {
