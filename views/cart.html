@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="../">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
@@ -48,17 +49,19 @@
     
     
     <template id="product">
-        <div class="cart-item">
+        <a class="cart-item">
             <img class="cart-item__img" alt="">
             <div class="cart-item__content">
                 <h2 data-text="name" class="cart-item__name"></h2>
+                <p data-text="lens"></p>
                 <div data-text="price" class="cart-item__price"></div>
                 <div class="cart-item__subtotal">
                     Sous-total&nbsp;(Qté&nbsp;: <span data-text="quantity"></span>)&nbsp;:
                     <span data-text="totalPrice"></span>
                 </div>
+                <div class="cart-item__remove">Supprimer</div>
             </div>
-        </div>
+        </a>
     </template>
     
     <script src="../js/models/cart.js"></script>

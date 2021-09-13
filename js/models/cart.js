@@ -50,6 +50,12 @@ class Cart {
         this.save();
     }
 
+    // Takes the index (inside the "content" array) of the element to remove
+    remove(index) {
+        this.content.splice(index, 1);
+        this.save();
+    }
+
     // Empties the cart (both the object and the localStorage)
     empty() {
         this.content = [];

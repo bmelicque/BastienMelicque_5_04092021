@@ -64,6 +64,16 @@ hydrate(document.querySelector('section'), cart.content);
 document.getElementById('cart-preview').textContent = cart.quantity;
 document.getElementById('total-price').textContent = formatPrice(cart.totalPrice);
 
+// Delete buttons on each cart item
+document.querySelectorAll('.cart-item__remove').forEach((button, index) => {
+    button.addEventListener('click', e => {
+        e.stopPropagation();
+        e.preventDefault();
+        cart.remove(index);
+        document.location.reload();
+    })
+})
+
 // On form submit: checks user input in the form, then posts the order to the backend
 document.getElementById('order').addEventListener('submit', e => {
     e.preventDefault();

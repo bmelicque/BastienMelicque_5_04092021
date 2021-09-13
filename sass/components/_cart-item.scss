@@ -66,4 +66,17 @@
             font-size: 1.4rem;
         }
     }
+
+    &__remove {
+        color: darken($color-secondary, 40%);
+        @include sm {
+            position: absolute;
+            bottom: 1rem;
+            left: 2rem;
+        }
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
 }

@@ -164,6 +164,19 @@ select {
 .cart-item__subtotal span:last-of-type {
   font-size: 1.4rem;
 }
+.cart-item__remove {
+  color: #2c018e;
+}
+@media screen and (min-width: 576px) {
+  .cart-item__remove {
+    position: absolute;
+    bottom: 1rem;
+    left: 2rem;
+  }
+}
+.cart-item__remove:hover {
+  text-decoration: underline;
+}
 
 .header {
   display: flex;
