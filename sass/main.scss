@@ -7,8 +7,11 @@
 @import "base/base";
 
 @import "components/card";
+@import "components/cart-item";
 
 @import "layout/header";
 @import "layout/main";
 @import "layout/list";
 @import "layout/footer";
+
+@import "pages/cart";

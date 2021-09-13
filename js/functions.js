@@ -2,7 +2,7 @@
 
 // Formats prices into displayable strings
 const formatPrice = price => {
-    return (price / 100).toFixed(2).toString().replace(".", ",") + " €";
+    return (price / 100).toFixed(2).toString().replace(".", ",") + '\u00a0€';
 }
 
 // Takes a container and a product object

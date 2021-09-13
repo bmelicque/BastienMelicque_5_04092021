@@ -1,0 +1,10 @@
+.total-price {
+    align-self: flex-end;
+    font-size: 1.2rem;
+    margin-right: 1rem;
+
+    &__price {
+        font-size: 1.4rem;
+        font-weight: bold;
+    }
+}

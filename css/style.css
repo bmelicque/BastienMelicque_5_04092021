@@ -24,6 +24,12 @@ select {
   font-size: 1rem;
 }
 
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
 .card {
   display: flex;
   flex-direction: column;
@@ -33,9 +39,12 @@ select {
   overflow: hidden;
 }
 @media screen and (min-width: 768px) {
-  .card--full {
+  .card--horizontal {
     flex-direction: row;
   }
+}
+.card--reduced {
+  flex-direction: row;
 }
 .card--click {
   transition: 0.2s;
@@ -51,9 +60,12 @@ select {
   flex: 1 10rem;
   min-height: 0;
 }
+.card__img--reduced {
+  max-width: 20%;
+}
 @media screen and (min-width: 768px) {
   .card__img--horizontal {
-    width: 40%;
+    max-width: 40%;
   }
 }
 .card__content {
@@ -87,6 +99,70 @@ select {
 .card__button:hover {
   transform: scale(1.02);
   background-color: #452c42;
+}
+
+.cart-item {
+  display: flex;
+  box-shadow: 0 0 4px #653f5f;
+  background-color: white;
+  border-radius: 0.2rem;
+  overflow: hidden;
+  height: 12rem;
+}
+@media screen and (min-width: 768px) {
+  .cart-item--horizontal {
+    flex-direction: row;
+  }
+}
+.cart-item--reduced {
+  flex-direction: row;
+}
+.cart-item--click {
+  transition: 0.2s;
+  cursor: pointer;
+}
+.cart-item--click:hover {
+  box-shadow: 0 0 6px #452c42;
+  transform: scale(1.01);
+}
+.cart-item__img {
+  width: 25%;
+  min-width: 10rem;
+  object-fit: cover;
+}
+.cart-item__content {
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  flex: 1;
+}
+.cart-item__name {
+  font-size: 1.4rem;
+}
+.cart-item__price {
+  font-size: 1.4rem;
+}
+@media screen and (min-width: 576px) {
+  .cart-item__price {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+  }
+}
+.cart-item__subtotal {
+  font-size: 1.2rem;
+}
+@media screen and (min-width: 576px) {
+  .cart-item__subtotal {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+  }
+}
+.cart-item__subtotal span:last-of-type {
+  font-size: 1.4rem;
 }
 
 .header {
@@ -131,9 +207,9 @@ select {
   max-width: 1140px;
   flex-direction: column;
   flex: 1;
+  gap: 1rem;
 }
 .main__title {
-  margin-bottom: 1.5rem;
   margin-left: 1rem;
   font-size: 2rem;
 }
@@ -182,6 +258,16 @@ select {
   transform: translateX(-50%);
   background: #261824;
   box-shadow: 0 0 4px #653f5f;
+}
+
+.total-price {
+  align-self: flex-end;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+.total-price__price {
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
 /*# sourceMappingURL=style.css.map */

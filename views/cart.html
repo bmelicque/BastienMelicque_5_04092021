@@ -21,36 +21,42 @@
             Panier&nbsp;: <span id="cart-preview"></span>
         </a>
     </header>
-
-    <section class="list">
-        <h1>Votre panier</h1>
-        
-    </section>
-    <p>Prix total : <span id="total-price"></span></p>
     
-    <form class="order" id="order">
-        <label for="lastName">NOM :</label>
-        <input type="text" data-type="name" id="lastName" name="lastName" required>
-        <label for="firstName">Prénom :</label>
-        <input type="text" data-type="name" id="firstName" name="firstName" required>
-        <label for="address">Adresse :</label>
-        <input type="text" data-type="address" id="address" name="address" required>
-        <label for="city">Ville :</label>
-        <input type="text" data-type="name" id="city" name="city" required>
-        <label for="mail">Mail :</label>
-        <input type="email" data-type="email" id="email" name="email" required>
-        <button type="submit">Commander</button>
-    </form>
+    <main class="main">
+        <section class="section">
+            <h1 class="main__title">Votre panier&nbsp;:</h1>
+            <!-- Javascript is injected here -->
+        </section>
+        <p class="total-price">Prix total du panier&nbsp;:
+            <span id="total-price" class="total-price__price"></span>
+        </p>
+        
+        <form class="order" id="order">
+            <label for="lastName">NOM :</label>
+            <input type="text" data-type="name" id="lastName" name="lastName" required>
+            <label for="firstName">Prénom :</label>
+            <input type="text" data-type="name" id="firstName" name="firstName" required>
+            <label for="address">Adresse :</label>
+            <input type="text" data-type="address" id="address" name="address" required>
+            <label for="city">Ville :</label>
+            <input type="text" data-type="name" id="city" name="city" required>
+            <label for="mail">Mail :</label>
+            <input type="email" data-type="email" id="email" name="email" required>
+            <button type="submit">Commander</button>
+        </form>
+    </main>
     
     
     <template id="product">
-        <div class="card card--reduced">
-            <img class="card__img card__img--reduced" alt="">
-            <div class="card__content">
-                <div data-text="name" class="card__name"></div>
-                <div data-text="price" class="card__price"></div>
-                <div data-text="quantity" class="card__quantity"></div>
-                <div data-text="totalPrice" class="card__total-price"></div>
+        <div class="cart-item">
+            <img class="cart-item__img" alt="">
+            <div class="cart-item__content">
+                <h2 data-text="name" class="cart-item__name"></h2>
+                <div data-text="price" class="cart-item__price"></div>
+                <div class="cart-item__subtotal">
+                    Sous-total&nbsp;(Qté&nbsp;: <span data-text="quantity"></span>)&nbsp;:
+                    <span data-text="totalPrice"></span>
+                </div>
             </div>
         </div>
     </template>

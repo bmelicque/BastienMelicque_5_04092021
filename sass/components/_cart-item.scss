@@ -1,0 +1,69 @@
+.cart-item {
+    display: flex;
+    box-shadow: $shadow;
+    background-color: white;
+    border-radius: .2rem;
+    overflow: hidden;
+    height: 12rem;
+    
+    @include md {
+        &--horizontal {
+            flex-direction: row;
+        }
+    }
+
+    &--reduced {
+        flex-direction: row;
+    }
+    
+    &--click {
+        transition: .2s;
+        cursor: pointer;
+        &:hover {
+            box-shadow: $shadow-strong;
+            transform: scale(1.01);
+        }
+    }
+    
+    &__img {
+        width: 25%;
+        min-width: 10rem;
+        object-fit: cover;
+    }
+    
+    &__content {
+        padding: 1rem 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        position: relative;
+        flex: 1;
+    }
+    
+    &__name {
+        font-size: 1.4rem;
+    }
+    
+    &__price {
+        font-size: 1.4rem;
+
+        @include sm {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+        }
+    }
+
+    &__subtotal {
+        font-size: 1.2rem;
+        @include sm {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+        }
+
+        span:last-of-type {
+            font-size: 1.4rem;
+        }
+    }
+}
