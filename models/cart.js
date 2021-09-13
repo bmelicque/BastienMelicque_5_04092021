@@ -1,3 +1,4 @@
+/* FUNCTIONS */
 // Displays an error message on the field passed in argument
 const displayError = element => {
     element.value = "";
@@ -9,7 +10,7 @@ const displayError = element => {
             "city": "Veuillez renseigner un nom de ville correct",
             "email": "Veuillez renseigner une adresse e-mail correcte",
         };
-
+        
         let errorMessage = document.createElement('p');
         errorMessage.textContent = errors[element.name];
         errorMessage.classList.add("form__error");
@@ -17,7 +18,7 @@ const displayError = element => {
     }
 }
 
-// Checks a form; returns a boolean
+// Checks a form; returns a boolean and calls "displayError" for each error in the form
 const checkForm = form => {
     let isValid = true;
     const inputs = form.querySelectorAll('input');
@@ -40,43 +41,40 @@ const checkForm = form => {
 // Uses the post method to send the order to the backend
 // Redirects the user on the next page
 const postOrder = async (contact, products) => {
-    fetch('http://localhost:3000/api/cameras/order', {
-    method: "POST",
-    headers: {
-        "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-        contact: contact,
-        products: products
-    }),
-    mode: 'cors'
-}).then(res => res.json())
-.then(res => {
-    const URL = "./order-status.html?id=" + res.orderId + "&price=" + cart.totalPrice;
-    window.location = URL;
-})
+    const params = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            contact: contact,
+            products: products
+        }),
+        mode: 'cors'
+    }
+    fetch('http://localhost:3000/api/cameras/order', params)
+    .then(res => res.json())
+    .then(res => window.location = `./order-status.html?id=${res.orderId}&price=${cart.totalPrice}`)
 }
 
-// Hydrating page
+/* HYDRATING THE PAGE */
 let cart = new Cart();
 cart.load();
-cart.content.forEach(product => hydrate(document.querySelector('section'), product));
+hydrate(document.querySelector('section'), cart.content);
 document.getElementById('total-price').textContent = formatPrice(cart.totalPrice);
 
-
+// On form submit: checks user input in the form, then posts the order to the backend
 document.getElementById('order').addEventListener('submit', e => {
     e.preventDefault();
     if (checkForm(e.target)) {
-        const inputs = e.target.querySelectorAll('input');
         let contact = {};
         let products = [];
-        inputs.forEach(input => contact[input.name] = input.value);
+        e.target.querySelectorAll('input').forEach(input => contact[input.name] = input.value);
         cart.content.forEach(item => {
             for (let i = 0; i < item.quantity; i++) {
                 products.push(item.id);
             }
         });
-        
         postOrder(contact, products);
     }
 });

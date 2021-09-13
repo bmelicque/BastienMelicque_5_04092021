@@ -20,11 +20,17 @@
         <img src="" alt="Panier" class="cart__img">
         <form id="addToCart" class="cart__add">
             <label for="quantity">Quantité&nbsp;:</label>
-            <div class="cart__quantity">
-                <a role="button" class="cart__minus" id="cart__minus" title="En retirer un">-</a>
-                <input type="text" class="cart__number" id="quantity" name="quantity" value="1">
-                <a role="button" class="cart__plus" id="cart__plus" title="En ajouter un">+</a>
-            </div>
+            <select name="quantity" id="quantity">
+                <option default>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+            </select>
             <button type="submit">Ajouter au panier</button>
         </form>
     </div>
