@@ -54,7 +54,11 @@ const postOrder = async (contact, products) => {
     }
     fetch('http://localhost:3000/api/cameras/order', params)
     .then(res => res.json())
-    .then(res => window.location = `./views/order-status.html?id=${res.orderId}&price=${cart.totalPrice}`)
+    .then(res => {
+        const price = cart.totalPrice;
+        cart.empty();
+        window.location = `./views/order-status.html?id=${res.orderId}&price=${price}`;
+    })
 }
 
 /* HYDRATING THE PAGE */

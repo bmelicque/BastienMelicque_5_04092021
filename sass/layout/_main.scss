@@ -4,6 +4,17 @@
     flex: 1;
     gap: 1rem;
 
+    &--bg {
+        background-color: white;
+
+        @include sm {
+            box-shadow: $shadow;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            border-radius: .5rem;
+        }
+    }
+
     &__title {
         margin-left: 1rem;
         font-size: 2rem;

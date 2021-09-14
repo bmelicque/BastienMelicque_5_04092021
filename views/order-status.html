@@ -4,9 +4,34 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <base href="../">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/bdc3cb79cd.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/style.css">
     <title>Document</title>
 </head>
 <body>
-    
+    <header class="header">
+        <a href="./index.html" class="header__home">
+            <img src="./media/logo.svg" alt="Orinoco" class="header__logo">
+        </a>
+        <a class="header__cart" href="views/cart.html">
+            <i class="fas fa-shopping-cart"></i>
+            Panier&nbsp;: <span id="cart-preview">0</span>
+        </a>
+    </header>
+
+    <main class="main main--bg">
+        <h1 class="main__title">
+            Merci de votre commande
+        </h1>
+        <p>Votre commande d'un montant total de <span id="orderPrice"></span> a bien été reçue et porte le numéro&nbsp;:</p>
+        <p id="orderNumber"></p>
+    </main>
+
+    <script src="../js/functions.js"></script>
+    <script src="../js/views/order-status.js"></script>
 </body>
 </html>

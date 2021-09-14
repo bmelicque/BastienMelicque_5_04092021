@@ -208,6 +208,17 @@ button[type=submit]:hover {
   flex: 1;
   gap: 1rem;
 }
+.main--bg {
+  background-color: white;
+}
+@media screen and (min-width: 576px) {
+  .main--bg {
+    box-shadow: 0 0 4px #653f5f;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 0.5rem;
+  }
+}
 .main__title {
   margin-left: 1rem;
   font-size: 2rem;
@@ -281,6 +292,16 @@ button[type=submit]:hover {
 }
 .total-price__price {
   font-size: 1.4rem;
+  font-weight: bold;
+}
+
+#orderNumber {
+  align-self: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+#orderPrice {
   font-weight: bold;
 }
 
