@@ -17,7 +17,7 @@
         <a href="../index.html" class="header__home">
             <img src="../media/logo.svg" alt="Orinoco" class="header__logo">
         </a>
-        <a class="header__cart" href="cart.html">
+        <a class="header__cart" href="./views/cart.html">
             <i class="fas fa-shopping-cart"></i>
             Panier&nbsp;: <span id="cart-preview"></span>
         </a>
@@ -32,7 +32,8 @@
             <span id="total-price" class="total-price__price"></span>
         </p>
         
-        <form class="order" id="order">
+        <form class="contact-form" id="contact-form">
+            <h2 class="contact-form__title">Vos coordonnées&nbsp;:</h2>
             <label for="lastName">NOM :</label>
             <input type="text" data-type="name" id="lastName" name="lastName" required>
             <label for="firstName">Prénom :</label>
@@ -53,7 +54,7 @@
             <img class="cart-item__img" alt="">
             <div class="cart-item__content">
                 <h2 data-text="name" class="cart-item__name"></h2>
-                <p data-text="lens"></p>
+                <p>Objectif&nbsp;: <span data-text="lens" class="cart-item__lens"></span></p>
                 <div data-text="price" class="cart-item__price"></div>
                 <div class="cart-item__subtotal">
                     Sous-total&nbsp;(Qté&nbsp;: <span data-text="quantity"></span>)&nbsp;:

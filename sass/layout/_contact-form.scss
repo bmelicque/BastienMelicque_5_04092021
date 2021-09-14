@@ -1,0 +1,48 @@
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: .2rem;
+    background-color: white;
+    box-shadow: $shadow;
+    border-radius: .2rem;
+    padding: 1rem 2rem;
+    margin-top: 2rem;
+
+    &__title {
+        margin-bottom: 1rem;
+    }
+
+    label {
+        font-weight: bold;
+    }
+
+    input {
+        margin-bottom: .5rem;
+        outline: none;
+        font-size: 1rem;
+        background-color: white;
+        border: solid 1px $color-primary;
+        border-radius: 2px;
+        padding: 3px 8px;
+
+        &:focus {
+            border-radius: 3px;
+            padding: 2px 7px;
+            border: solid 2px lighten($color-primary, 5%);
+        }
+    }
+
+    &__error {
+        text-align: center;
+        background-color: lighten($color-tertiary, 50%);
+        border: 1px solid $color-tertiary;
+        color: darken($color-tertiary, 20%);
+        padding: .3rem;
+        border-radius: 3px;
+    }
+
+    button[type=submit] {
+        max-width: 40%;
+        align-self: center;
+    }
+}
