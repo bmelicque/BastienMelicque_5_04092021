@@ -32,9 +32,8 @@ class Cart {
     
     // Adds a certain quantity of a product with the chosen lens into the current cart
     add(product, lens, quantity) {
-        const found = this.content.findIndex(inCart => {
-            (product._id == inCart.id) && (product.lens == inCart.lens)
-        })
+        const found = this.content.findIndex(inCart => (product._id == inCart.id) && (lens == inCart.lens))
+        console.log(found);
         if (found >= 0) {
             this.content[found].quantity += product.quantity;
         } else {

@@ -78,12 +78,10 @@ button[type=submit]:hover {
   flex: 1 10rem;
   min-height: 0;
 }
-.card__img--reduced {
-  max-width: 20%;
-}
 @media screen and (min-width: 768px) {
   .card__img--horizontal {
-    max-width: 40%;
+    min-width: 20rem;
+    flex: 1 40%;
   }
 }
 .card__content {

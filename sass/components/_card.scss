@@ -30,14 +30,11 @@
         object-fit: cover;
         flex: 1 10rem;
         min-height: 0;
-
-        &--reduced {
-            max-width: 20%;
-        }
         
         @include md {
             &--horizontal {
-                max-width: 40%;
+                min-width: 20rem;
+                flex: 1 40%;
             }
         }
     }

@@ -25,7 +25,7 @@ const checkForm = form => {
     const constraints = {
         "name": new RegExp(`^[A-Za-zÀ-ÖØ-öø-ÿ' -]+$`),
         "email": new RegExp('^[a-zA-Z0-9_.+-]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$'),
-        "address": new RegExp(`^[0-9A-Za-zÀ-ÖØ-öø-ÿ' -,]+$`)
+        "address": new RegExp(`^[0-9A-Za-zÀ-ÖØ-öø-ÿ' -,.]+$`)
     }
     
     inputs.forEach(input => {
