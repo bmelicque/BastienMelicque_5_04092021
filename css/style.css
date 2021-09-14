@@ -30,6 +30,12 @@ select {
   gap: 1rem;
 }
 
+select {
+  background: none;
+  border: grey 1px solid;
+  border-radius: 2px;
+}
+
 button[type=submit] {
   font-size: 1rem;
   height: 2rem;
