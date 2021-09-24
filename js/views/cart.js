@@ -2,7 +2,7 @@
 // Displays an error message on the field passed in argument
 const displayError = element => {
     element.value = "";
-    if (document.querySelector("#"+element.id+" + .contact-form__error") == null){
+    if (document.querySelector(`#${element.id} + .contact-form__error`) == null){
         const errors = {
             "lastName": "Veuillez renseigner un nom correct (sans chiffres ni caractères spéciaux)",
             "firstName": "Veuillez renseigner un prénom correct (sans chiffres ni caractères spéciaux)",
@@ -56,7 +56,7 @@ const postOrder = async (contact, products) => {
     .then(res => res.json())
     .then(res => {
         const price = cart.totalPrice;
-        cart.empty();
+        cart.clear();
         window.location = `./views/order-status.html?id=${res.orderId}&price=${price}`;
     })
 }
@@ -71,7 +71,7 @@ if (cart.quantity) {
 }
 else document.querySelector('.main').innerHTML = `<h1 class="main__title">Votre panier est vide</h1>`;
 
-// Delete buttons on each cart item
+// "Delete" buttons on each cart item
 document.querySelectorAll('.cart-item__remove').forEach((button, index) => {
     button.addEventListener('click', e => {
         e.stopPropagation();
@@ -86,13 +86,14 @@ document.getElementById('contact-form').addEventListener('submit', e => {
     e.preventDefault();
     if (checkForm(e.target)) {
         let contact = {};
-        let products = [];
         e.target.querySelectorAll('input').forEach(input => contact[input.name] = input.value);
-        cart.content.forEach(item => {
+        const products = cart.content.reduce((acc, item) => {
             for (let i = 0; i < item.quantity; i++) {
-                products.push(item.id);
+                acc.push(item.id);
             }
-        });
+            return acc;
+        }, []);
+
         postOrder(contact, products);
     }
 });

@@ -6,7 +6,8 @@ const formatPrice = price => {
 }
 
 // Takes a container and a product object
-// Hydrates the container with the data from the object
+// Hydrates the container with the data from the object using the <template> element from the HTML page
+// If the "product" is actually an array of products, the function calls itself recursively for each element of the array
 const hydrate = (container, product) => {
     if (Array.isArray(product)) product.forEach(item => hydrate(container, item))
     else {
@@ -45,13 +46,11 @@ const hydrate = (container, product) => {
 // If no argument, returns an object containing all the parameters
 const getParams = (asked = '') => {
     const vars = window.location.search.substr(1).split('&');
-    let params = {};
-    
-    vars.forEach(element => {
-        const [key, value] = element.split('=');
-        params[key] = value;
-    });
-    
+    const params = vars.reduce((acc, current) => {
+        const [key, value] = current.split('=');
+        acc[key] = value;
+        return acc;
+    }, {});
     if (asked) return params[asked];
     else return params;
 }
