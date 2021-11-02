@@ -58,6 +58,6 @@ const getParams = (asked = '') => {
 // Takes an id and returns the fetched product (with "get" method)
 // If no id is passed, returns a table with all the products
 const fetchProduct = async (id = '') => {
-    return await fetch(`http://localhost:3000/api/cameras/${id}`)
+    return await fetch(`https://orinoco-bmel-back.herokuapp.com/api/cameras/${id}`)
     .then(res => res.json())
 }
